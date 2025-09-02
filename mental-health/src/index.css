@@ -1,0 +1,197 @@
+/* -------------------------------- Fonts & Tailwind -------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Gabarito:wght@400..900&family=Lexend:wght@100..900&family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+/* -------------------------------- Theme Variables -------------------------------- */
+@theme {
+  --font-sans: "Funnel Display", "Gabarito", "Lexend", "Outfit", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-main-pink: #df1463;
+  --color-dark-pink: #590828;
+  --color-light-pink: #f5b9d0;
+
+  --color-main-blue: #419fe2;
+  --color-dark-blue: #1a405a;
+  --color-light-blue: #b3d9f3;
+}
+
+/* -------------------------------- Base Styles -------------------------------- */
+html,
+body {
+  @apply bg-white;
+}
+
+main {
+  @apply min-h-screen flex flex-col items-center justify-center text-center p-4;
+}
+
+h1 {
+  @apply text-6xl text-gradient leading-tight tracking-[-2px] font-semibold;
+}
+
+h2,
+label {
+  @apply text-3xl;
+}
+
+input,
+textarea {
+  @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-white;
+}
+
+form {
+  @apply flex flex-col items-start gap-8 w-full;
+}
+
+/* -------------------------------- Component Layer -------------------------------- */
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#df1463] via-black to-[#419fe2];
+  }
+
+  .gradient-border {
+    @apply bg-gradient-to-b from-[#b3d9f3] to-[#f5b9d0] p-4 rounded-2xl;
+  }
+
+  .primary-button {
+    @apply primary-gradient text-white rounded-full px-4 py-2 cursor-pointer w-full;
+  }
+
+  .back-button {
+    @apply flex flex-row items-center gap-2 border border-gray-200 rounded-lg p-2 shadow-sm;
+  }
+
+  .auth-button {
+    @apply primary-gradient rounded-full py-4 px-8 cursor-pointer w-[600px] max-md:w-full text-3xl font-semibold text-white;
+  }
+
+  .main-section {
+    @apply flex flex-col items-center gap-8 pt-12 mx-15 pb-5;
+  }
+
+  .page-heading {
+    @apply flex flex-col items-center gap-8 max-w-4xl text-center;
+  }
+
+  .navbar {
+    @apply flex flex-row justify-between items-center bg-white rounded-full p-4 w-full px-10 max-w-[1200px] mx-auto;
+  }
+
+  .score-badge {
+    @apply flex flex-row items-center justify-center py-1 px-2 gap-4 rounded-[96px];
+  }
+
+  .form-div {
+    @apply flex flex-col gap-2 w-full items-start;
+  }
+
+  .uplader-drag-area {
+    @apply relative p-8 text-center transition-all duration-700 cursor-pointer bg-white rounded-2xl min-h-[208px];
+  }
+
+  .uploader-selected-file {
+    @apply flex items-center justify-between p-3 bg-gray-50 rounded-2xl;
+  }
+}
+
+/* -------------------------------- Utility Layer -------------------------------- */
+@utility bg-gradient {
+  background: linear-gradient(to bottom, #df1463 60%, #590828cc);
+}
+
+@utility text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#df1463] via-black to-[#419fe2];
+}
+
+@utility gradient-hover {
+  @apply bg-gradient-to-b from-[#b3d9f3] to-[#f5b9d0];
+}
+
+@utility primary-gradient {
+  background: linear-gradient(to bottom, #df1463, #590828);
+}
+
+@utility primary-gradient-hover {
+  background: linear-gradient(to bottom, #590828, #1a405a);
+}
+
+@utility inset-shadow {
+  box-shadow: inset 0 0 12px 0 rgba(72, 19, 90, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* -------------------------------- Animations -------------------------------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* -------------------------------- CSS Variables -------------------------------- */
+:root {
+  --color-main-pink: #df1463;
+  --color-dark-pink: #590828;
+  --color-light-pink: #f5b9d0;
+
+  --color-main-blue: #419fe2;
+  --color-dark-blue: #1a405a;
+  --color-light-blue: #b3d9f3;
+
+  --color-black: #000000;
+  --color-white: #ffffff;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.25;
+  animation: floatUpDown ease-in-out infinite;
+  z-index: 0;
+  filter: blur(4px);
+}
+
+.circle-sm {
+  width: 80px;
+  height: 80px;
+  animation-duration: 6s;
+}
+
+.circle-md {
+  width: 140px;
+  height: 140px;
+  animation-duration: 7s;
+}
+
+.circle-lg {
+  width: 200px;
+  height: 200px;
+  animation-duration: 9s;
+}
+
+.bg-light-pink {
+  background-color: var(--color-light-pink);
+}
+
+.bg-light-blue {
+  background-color: var(--color-light-blue);
+}
+
+.navbar {
+  @apply flex justify-between items-center px-10 py-4 bg-white rounded-full max-w-[1200px] mx-auto;
+}
+
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
